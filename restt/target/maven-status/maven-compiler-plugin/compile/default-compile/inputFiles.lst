@@ -1,0 +1,16 @@
+D:\bvv\git_restt\restt\src\main\java\restt\security\OAuth2SecurityConfiguration.java
+D:\bvv\git_restt\restt\src\main\java\restt\security\AuthorizationServerConfigurationMEMORY.java
+D:\bvv\git_restt\restt\src\main\java\restt\security\MethodSecurityConfig.java
+D:\bvv\git_restt\restt\src\main\java\restt\controller\ResttCtrl.java
+D:\bvv\git_restt\restt\src\main\java\restt\dao\Dao.java
+D:\bvv\git_restt\restt\src\main\java\restt\security\ResourceServerConfiguration.java
+D:\bvv\git_restt\restt\src\main\java\restt\config\RestInitializer.java
+D:\bvv\git_restt\restt\src\main\java\restt\security\SecurityInit.java
+D:\bvv\git_restt\restt\src\main\java\restt\security\AuthorizationServerConfigurationSQL.java
+D:\bvv\git_restt\restt\src\main\java\restt\config\ResttConfiguration.java
+D:\bvv\git_restt\restt\src\main\java\restt\model\UserRole.java
+D:\bvv\git_restt\restt\src\main\java\restt\config\CORSFilter.java
+D:\bvv\git_restt\restt\src\main\java\restt\dao\DaoImpl.java
+D:\bvv\git_restt\restt\src\main\java\restt\model\User.java
+D:\bvv\git_restt\restt\src\main\java\restt\security\HibernateConfiguration.java
+D:\bvv\git_restt\restt\src\main\java\restt\service\MyUserDetailsService.java
