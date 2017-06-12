@@ -2,6 +2,8 @@ package restt.dao;
 
 
 
+import java.util.List;
+
 import restt.model.*;
 
 
@@ -9,7 +11,10 @@ public interface Dao {
 	
 
 	
-	User findByUserName(String username);
+	public User findByUserName(String username);
+	public List<User> getUsersList();
+	
+	
 	
 	
 }

@@ -3,46 +3,42 @@ package restt.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import restt.model.User;
+import restt.service.ResttServiceImpl;
 
 
 @RestController
 public class ResttCtrl {
 	
+	@Autowired
+	private ResttServiceImpl resttService;  //Service which will do all data retrieval/manipulation work
+
+	
     @RequestMapping(value = "/user/", method = RequestMethod.GET)
     public ResponseEntity<List<User>> listAllUsers() {
-    	/*
-        List<User> users = userService.findAllUsers();
+    	
+    	
+    	
+        List<User> users = resttService.getUsersList();
         if(users.isEmpty()){
             return new ResponseEntity<List<User>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
         }
         return new ResponseEntity<List<User>>(users, HttpStatus.OK);
-        */
-    	List<User> users = new ArrayList<User>();
-    	
-    	User u1 = new User();
-    	u1.setName("u1");
-    	u1.setPassword("password");
-    	
-    	users.add(u1);
-    	
-        if(users.isEmpty()){
-            return new ResponseEntity<List<User>>(HttpStatus.NO_CONTENT);//You many decide to return HttpStatus.NOT_FOUND
-        }
-
-    	return new ResponseEntity<List<User>>(users, HttpStatus.OK);
-
+        
     }
     
     
-    /*
-  
+
+    /*    
     //-------------------Retrieve Single User--------------------------------------------------------
       
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
@@ -57,7 +53,7 @@ public class ResttCtrl {
     }
   
       
-      
+    
     //-------------------Create a User--------------------------------------------------------
       
     @RequestMapping(value = "/user/", method = RequestMethod.POST)

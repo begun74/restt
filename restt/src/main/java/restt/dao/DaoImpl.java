@@ -23,7 +23,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Repository;
 
-import  restt.model.*;
+import restt.model.*;
+import restt.model.User;
 
 
 
@@ -59,6 +60,13 @@ public class DaoImpl implements Dao {
 			return users.get(0);
 		else
 			return null;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<User> getUsersList() {
+		// TODO Auto-generated method stub
+		return getSession().createSQLQuery("select * from tt_user order by name").addEntity(User.class).list();
 	}
 
 
