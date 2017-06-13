@@ -56,7 +56,7 @@ public class ResttCtrl {
     //------------------- Retrieve Single User by Name --------------------------------------------------------
     
     @RequestMapping(value = "/user/{username}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<User> getUser(@PathVariable("username") String username) {
+    public ResponseEntity<User> getUserByName(@PathVariable("username") String username) {
         System.out.println("Fetching User with username " + username);
         User user = resttService.findByUserName(username);
         if (user == null) {
@@ -68,9 +68,9 @@ public class ResttCtrl {
 
 
     //-------------------Retrieve Single User--------------------------------------------------------
-
+/*
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<User> getUser(@PathVariable("id") long id) {
+    public ResponseEntity<User> getUserById(@PathVariable("id") long id) {
         System.out.println("Fetching User with id " + id);
         User user = resttService.findUserById(id);
         if (user == null) {
@@ -80,7 +80,7 @@ public class ResttCtrl {
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
-    
+  */  
     /*    
     //-------------------Retrieve Single User--------------------------------------------------------
       
