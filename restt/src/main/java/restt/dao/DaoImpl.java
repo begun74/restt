@@ -64,6 +64,18 @@ public class DaoImpl implements Dao {
 		return getSession().createSQLQuery("select * from tt_user order by name").addEntity(User.class).list();
 	}
 
+	@Override
+	public void createUser(User user) {
+		// TODO Auto-generated method stub
+		getSession().saveOrUpdate(user);
+	}
+
+	@Override
+	public User findUserById(Long id) {
+		// TODO Auto-generated method stub
+		return (User) getSession().get(User.class, id);
+	}
+
 
 	
 

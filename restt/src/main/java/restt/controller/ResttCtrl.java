@@ -4,13 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import restt.model.User;
 import restt.service.ResttServiceImpl;
@@ -23,11 +26,23 @@ public class ResttCtrl {
 	private ResttServiceImpl resttService;  //Service which will do all data retrieval/manipulation work
 
 	
+    //-------------------Create a User--------------------------------------------------------
+    
+    @RequestMapping(value = "/user/", method = RequestMethod.POST)
+    public ResponseEntity<Void> createUser(@RequestBody User user, UriComponentsBuilder ucBuilder) {
+        System.out.println("Creating User " + user.getName());
+  
+        resttService.createUser(user);
+  
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
+        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+    }
+
+	
 	//------------------- Retrieve  User list --------------------------------------------------------
     @RequestMapping(value = "/users/", method = RequestMethod.GET)
     public ResponseEntity<List<User>> listAllUsers() {
-    	
-    	
     	
         List<User> users = resttService.getUsersList();
         if(users.isEmpty()){
@@ -52,6 +67,20 @@ public class ResttCtrl {
     }
 
 
+    //-------------------Retrieve Single User--------------------------------------------------------
+
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<User> getUser(@PathVariable("id") long id) {
+        System.out.println("Fetching User with id " + id);
+        User user = resttService.findUserById(id);
+        if (user == null) {
+            System.out.println("User with id " + id + " not found");
+            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+    }
+
+    
     /*    
     //-------------------Retrieve Single User--------------------------------------------------------
       
