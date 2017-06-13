@@ -48,7 +48,7 @@ public class User implements Serializable {
 	
 	private boolean enabled;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_with_role",
             joinColumns = @JoinColumn(name = "tt_user_id"),

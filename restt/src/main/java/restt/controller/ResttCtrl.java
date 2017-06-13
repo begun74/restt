@@ -23,7 +23,8 @@ public class ResttCtrl {
 	private ResttServiceImpl resttService;  //Service which will do all data retrieval/manipulation work
 
 	
-    @RequestMapping(value = "/user/", method = RequestMethod.GET)
+	//------------------- Retrieve  User list --------------------------------------------------------
+    @RequestMapping(value = "/users/", method = RequestMethod.GET)
     public ResponseEntity<List<User>> listAllUsers() {
     	
     	
@@ -36,7 +37,20 @@ public class ResttCtrl {
         
     }
     
+
+    //------------------- Retrieve Single User by Name --------------------------------------------------------
     
+    @RequestMapping(value = "/user/{username}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<User> getUser(@PathVariable("username") String username) {
+        System.out.println("Fetching User with username " + username);
+        User user = resttService.findByUserName(username);
+        if (user == null) {
+            System.out.println("User with username " + username + " not found");
+            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+    }
+
 
     /*    
     //-------------------Retrieve Single User--------------------------------------------------------

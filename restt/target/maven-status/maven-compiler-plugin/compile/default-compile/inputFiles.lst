@@ -6,6 +6,7 @@ D:\bvv\git_restt\restt\src\main\java\restt\dao\Dao.java
 D:\bvv\git_restt\restt\src\main\java\restt\security\ResourceServerConfiguration.java
 D:\bvv\git_restt\restt\src\main\java\restt\config\RestInitializer.java
 D:\bvv\git_restt\restt\src\main\java\restt\security\SecurityInit.java
+D:\bvv\git_restt\restt\src\main\java\restt\service\ResttServiceImpl.java
 D:\bvv\git_restt\restt\src\main\java\restt\security\AuthorizationServerConfigurationSQL.java
 D:\bvv\git_restt\restt\src\main\java\restt\config\ResttConfiguration.java
 D:\bvv\git_restt\restt\src\main\java\restt\model\UserRole.java

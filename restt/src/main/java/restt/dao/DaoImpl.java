@@ -24,7 +24,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Repository;
 
 import restt.model.*;
-import restt.model.User;
+
 
 
 
@@ -49,17 +49,12 @@ public class DaoImpl implements Dao {
 	@Override
 	public User findByUserName(String username) {
 		// TODO Auto-generated method stub
-		List<User> users = new ArrayList<User>();
+		User user = null;
 		
-		users = getSession()
-				.createQuery("from User where name = :name")
-				.setParameter("name", username)
-				.list();
+		user = (User) getSession().createQuery("from User where name = :name").setParameter("name", username).uniqueResult();
 		
-		if(users.size() > 0)
-			return users.get(0);
-		else
-			return null;
+		
+		return user;
 	}
 
 	@Override
